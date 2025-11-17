@@ -10,7 +10,7 @@ From GitHub:
 dependencies:
   flutter_querybuilder:
     git:
-      url: https://github.com/yourusername/flutter-querybuilder.git
+      url: https://github.com/exotic308/flutter-querybuilder.git
       ref: main
 ```
 
