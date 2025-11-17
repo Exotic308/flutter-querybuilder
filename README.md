@@ -234,6 +234,12 @@ cd example
 flutter run
 ```
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/11b4f104-902d-43a5-b89c-99d43c590995" />
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/0987347c-0fc6-418a-8ad3-6a4c976fd210" />
+  <img alt="Splash screen with initialization checklist" src="https://github.com/user-attachments/assets/0987347c-0fc6-418a-8ad3-6a4c976fd210" width="100%" />
+</picture>
+
 ## Testing
 
 ```bash
