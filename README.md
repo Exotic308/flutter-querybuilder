@@ -2,6 +2,10 @@
 
 Flutter package for building complex queries with nested groups, operators, and JSON import/export. Features type-safe evaluation with caching.
 
+Inspired by:
+- **[react-querybuilder](https://github.com/react-querybuilder/react-querybuilder)**
+- **[react-awesome-query-builder](https://github.com/ukrbublik/react-awesome-query-builder)**
+
 ## Installation
 
 From GitHub:
