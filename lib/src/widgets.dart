@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'exceptions.dart';
 import 'models.dart';
 import 'query_builder_controller.dart';
 import 'serializer.dart';
@@ -552,10 +551,12 @@ class _QueryRuleWidgetState extends State<QueryRuleWidget> {
 
     if (widget.isMobile) {
       // Vertical layout for mobile
+      final theme = Theme.of(context);
+      final isDark = theme.brightness == Brightness.dark;
       return Container(
         padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
-          color: Colors.grey[50],
+          color: isDark ? theme.colorScheme.surfaceContainerHighest : Colors.grey[50],
           borderRadius: BorderRadius.circular(4),
         ),
         child: Column(
@@ -611,10 +612,12 @@ class _QueryRuleWidgetState extends State<QueryRuleWidget> {
       );
     } else {
       // Horizontal layout for desktop
+      final theme = Theme.of(context);
+      final isDark = theme.brightness == Brightness.dark;
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
         decoration: BoxDecoration(
-          color: Colors.grey[50],
+          color: isDark ? theme.colorScheme.surfaceContainerHighest : Colors.grey[50],
           borderRadius: BorderRadius.circular(4),
         ),
         child: Row(
@@ -713,11 +716,15 @@ class JsonViewerWidget extends StatelessWidget {
       listenable: controller,
       builder: (context, _) {
         final json = QuerySerializer.toJsonString(controller.query, pretty: true);
+        final theme = Theme.of(context);
+        final isDark = theme.brightness == Brightness.dark;
         return Container(
           decoration: BoxDecoration(
-            color: Colors.grey[100],
+            color: isDark ? theme.colorScheme.surfaceContainerHigh : Colors.grey[100],
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: Colors.grey[300]!),
+            border: Border.all(
+              color: isDark ? theme.colorScheme.outline.withOpacity(0.5) : Colors.grey[300]!,
+            ),
           ),
           child: Stack(
             children: [
@@ -798,12 +805,20 @@ class SampleDataViewerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.blue[50],
+        color: isDark 
+            ? theme.colorScheme.primaryContainer.withOpacity(0.3)
+            : Colors.blue[50],
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.blue[200]!),
+        border: Border.all(
+          color: isDark 
+              ? theme.colorScheme.primary.withOpacity(0.5)
+              : Colors.blue[200]!,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -893,12 +908,20 @@ class EvaluationResultWidget extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.green[50],
+        color: isDark 
+            ? theme.colorScheme.tertiaryContainer.withOpacity(0.3)
+            : Colors.green[50],
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.green[200]!),
+        border: Border.all(
+          color: isDark 
+              ? theme.colorScheme.tertiary.withOpacity(0.5)
+              : Colors.green[200]!,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
