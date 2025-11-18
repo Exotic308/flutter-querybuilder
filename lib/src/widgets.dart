@@ -496,6 +496,7 @@ class _QueryRuleWidgetState extends State<QueryRuleWidget> {
             if (date != null) {
               _valueController.text = date.toIso8601String().split('T')[0];
               _updateValue(date);
+              _notifyParent();
             }
           },
           style: OutlinedButton.styleFrom(
@@ -527,6 +528,7 @@ class _QueryRuleWidgetState extends State<QueryRuleWidget> {
             if (value != null) {
               _valueController.text = value;
               _updateValue(value);
+              _notifyParent();
             }
           },
           isExpanded: true,
@@ -539,6 +541,7 @@ class _QueryRuleWidgetState extends State<QueryRuleWidget> {
           onChanged: (value) {
             _valueController.text = value.toString();
             _updateValue(value ?? false);
+            _notifyParent();
           },
         );
     }

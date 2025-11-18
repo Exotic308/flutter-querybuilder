@@ -152,12 +152,28 @@ class QueryRule extends Equatable {
 
   /// Converts this rule to a JSON map.
   Map<String, dynamic> toJson() {
-    return {'field': field, 'operator': operator, 'value': value};
+    dynamic jsonValue = value;
+    if (value is DateTime) {
+      jsonValue = (value as DateTime).toIso8601String();
+    }
+    return {'field': field, 'operator': operator, 'value': jsonValue};
   }
 
   /// Creates a rule from a JSON map.
   factory QueryRule.fromJson(Map<String, dynamic> json) {
-    return QueryRule(field: json['field'] as String, operator: json['operator'] as String, value: json['value']);
+    dynamic value = json['value'];
+    // Try to parse ISO8601 date strings back to DateTime
+    if (value is String) {
+      // Only attempt parsing if it looks like an ISO8601 date string
+      if (value.contains('T') || RegExp(r'^\d{4}-\d{2}-\d{2}').hasMatch(value)) {
+        try {
+          value = DateTime.parse(value);
+        } catch (_) {
+          // Not a valid date string, keep as string
+        }
+      }
+    }
+    return QueryRule(field: json['field'] as String, operator: json['operator'] as String, value: value);
   }
 
   @override
